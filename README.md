@@ -8,16 +8,16 @@ This project implements and evaluates a simple moving average (SMA) crossover tr
 
 **Features**
 
-Historical price data ingestion
-Moving average crossover strategy implementation
-Strategy backtesting and performance evaluation
+Historical price data ingestion                         
+Moving average crossover strategy implementation                      
+Strategy backtesting and performance evaluation                         
 Visualization of results using interactive dashboards
 
 **Tech Stack**
 
-Programming: Python
-Analysis: pandas, NumPy
-Visualization: Tableau
+Programming: Python                  
+Analysis: pandas, NumPy                    
+Visualization: Tableau   
 
 **What I’m Learning**
 
