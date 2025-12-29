@@ -16,7 +16,7 @@ Visualization of results using interactive dashboards
 
 **Tech Stack**
 
-Programming: Python
+Programming: Python                       
 Data: yfinance                  
 Analysis: pandas, numPy                     
 Visualization: Streamlit   
