@@ -1,4 +1,4 @@
-import streamlit as st  # for web app
+
 import pandas as pd  # data manipulation
 import yfinance as yf  # fetching financial data
 import plotly.graph_objects as go  # visualizations
