@@ -1,4 +1,4 @@
-
+## part 2: function for calculating key metrics##
 
 def calculate_metrics(data):
     last_close = data['Close'].iloc[-1]
