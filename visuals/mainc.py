@@ -1,17 +1,18 @@
 import streamlit as st
-from fetch import fetch_data, process_data
-from metrics import calculate_metrics
-from indicators import add_technical_indicators
+from yfinance import Ticker
+from src.fetch import fetch_data, process_data
+from src.metrics import calculate_metrics
+from src.indicators import add_technical_indicators
 import plotly.graph_objects as go  # visualizations
 import plotly.express as px  # visualizations
-import sidebar
+from visuals.sidebar_layout import sidebar
 
 # update dashboard based on user input
 
 if st.sidebar.button('Update Dashboard'):
-    data = fetch_data(ticker, time_period, interval_mapping(time_period))
+    data = fetch_data(ticker, time_period, interval_mapping[time_period])
     data = process_data(data)
-    data = add_technical_indicators(data, indicators)
+    data = add_technical_indicators(data)
 
     last_close, change, per_change, high, low, volume = calculate_metrics(data)
 
