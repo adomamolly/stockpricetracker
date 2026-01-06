@@ -30,4 +30,4 @@ Communicating results through visualizations
 
 **Status**
 
-🚧 Strategy logic implemented. Expanding analysis and refining visualizations.
+🚧 Code implemented. Backtesting in python and Debugging.
