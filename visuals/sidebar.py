@@ -1,4 +1,6 @@
+from fetch import process_data, fetch_data
 import streamlit as st  # for web app
+from metrics import calculate_metrics  # for calculating key metrics
 
 # Set page configuration/page layout
 
@@ -25,3 +27,17 @@ interval_mapping = {
     '1y': '1wk',
     'max': '1wk'
 }
+
+# Sidebar selection for real-time prices of selected symbols
+
+st.sidebar.header('Real-Time Stock Prices')
+stock_symbols = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA']
+for symbol in stock_symbols:
+    real_time_data = fetch_data(symbol, '1d', '1m')
+    if not real_time_data.empty:
+        real_time_data = process_data(real_time_data)
+        latest_price = real_time_data['Close'].iloc[-1]
+        change = latest_price - real_time_data['Open'].iloc[0]
+        per_change = (change / real_time_data['Open']).iloc[0] * 100
+        st.sidebar.metric(
+            f"{symbol} Price", f"${latest_price:.2f} USD", f"{change:.2f} ({per_change})%")
