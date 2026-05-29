@@ -131,7 +131,7 @@ else:
 
             # 2. Backtest crossover strategy across all generated matrix arrays simultaneously
             sharpes, drawdowns, final_returns = run_vectorized_backtest(
-                raw_paths, fast_window=20, slow_window=20)
+                raw_paths, fast_window=20, slow_window=50)
 
         # Display aggregate macro performance metrics panels
         st.write("### Strategy Performance Aggregates")
