@@ -112,7 +112,6 @@ if analysis_mode == "Historical Ticker Analytics":
             data[['Datetime', 'Open', 'High', 'Low', 'Close', 'Volume']])
 
         st.subheader('Technical Indicators')
-        st.subheader('Technical Indicators')
 
 # Safely extract any columns that contain the words SMA or EMA
         indicator_cols = [col for col in data.columns if 'SMA' in str(
