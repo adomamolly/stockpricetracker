@@ -44,7 +44,7 @@ time_period = st.sidebar.selectbox(
 chart_type = st.sidebar.selectbox(
     'Chart Type', ['Line Chart', 'Candlestick Chart'])
 indicators = st.sidebar.multiselect(
-    'Technical Indicators', ['SMA 20', 'EMA 20'])
+    'Technical Indicators', ['SMA_20', 'EMA_50'])
 
 # Mapping of time periods to data intervals
 interval_mapping = {
