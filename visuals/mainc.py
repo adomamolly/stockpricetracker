@@ -96,12 +96,12 @@ if analysis_mode == "Historical Ticker Analytics":
             fig = px.line(data, x='Datetime', y='Close')
 
         for indicator in indicators:
-            if indicator == 'SMA 20':
+            if indicator == 'SMA_20':
                 fig.add_trace(go.Scatter(
-                    x=data['Datetime'], y=data['SMA 20'], name='SMA 20'))
-            elif indicator == 'EMA 20':
+                    x=data['Datetime'], y=data['SMA_20'], name='SMA_20'))
+            elif indicator == 'EMA_50':
                 fig.add_trace(go.Scatter(
-                    x=data['Datetime'], y=data['EMA 20'], name='EMA 20'))
+                    x=data['Datetime'], y=data['EMA_50'], name='EMA_50'))
 
         fig.update_layout(title=f"{ticker} {time_period.upper()} Chart",
                           xaxis_title='Time', yaxis_title='Price (USD)', height=600)
@@ -112,7 +112,7 @@ if analysis_mode == "Historical Ticker Analytics":
             data[['Datetime', 'Open', 'High', 'Low', 'Close', 'Volume']])
 
         st.subheader('Technical Indicators')
-        st.dataframe(data[['SMA_20', 'EMA_20']])
+        st.dataframe(data[['SMA_20', 'EMA_50']])
 
 else:
     # --------------------------------------------------------------------------
