@@ -37,7 +37,7 @@ for symbol in stock_symbols:
     if not real_time_data.empty:
         real_time_data = process_data(real_time_data)
         latest_price = real_time_data['Close'].iloc[-1]
-        change = latest_price - real_time_data['Open'].iloc[0]
+        change = latest_price - real_time_data['Open'].iloc[-1]
         per_change = (change / real_time_data['Open']).iloc[0] * 100
         st.sidebar.metric(
             f"{symbol} Price", f"${latest_price:.2f} USD", f"{change:.2f} ({per_change})%")
