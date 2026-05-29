@@ -6,7 +6,7 @@ import pandas as pd  # data manipulation
 
 def add_technical_indicators(data):
     data['SMA_20'] = data['Close'].rolling(window=20, min_periods=1).mean()
-    data['EMA_20'] = data['Close'].ewm(span=50, adjust=False).mean()
+    data['EMA_50'] = data['Close'].ewm(span=50, adjust=False).mean()
     return data
 
 # adding a vectorized backtester to check the SMA strategy performance across all the synthetic paths at once
