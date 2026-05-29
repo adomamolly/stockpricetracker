@@ -36,5 +36,6 @@ def run_vectorized_backtest(paths, fast_window=20, slow_window=50):
 
     running_max = np.maximum.accumulate(equity_curves, axis=0)
     drawdowns = np.min((equity_curves - running_max) / running_max, axis=0)
+    final_returns = (equity_curves[-1] - 1)  # Final return over the year
 
-    return sharpes, drawdowns
+    return sharpes, drawdowns, final_returns
