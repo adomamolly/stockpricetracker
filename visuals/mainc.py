@@ -75,7 +75,7 @@ if analysis_mode == "Historical Ticker Analytics":
         low = float(low.iloc[-1]) if hasattr(low, "iloc") else float(low)
         volume = int(vol.iloc[-1]) if hasattr(vol, "iloc") else int(vol)
 
-        # 3. Display metrics (This line 56 will now work flawlessly!)
+        # 3. Display metrics
         st.metric(
             label=f"{ticker} Last Close Price",
             value=f"{last_close:.2f} USD",
