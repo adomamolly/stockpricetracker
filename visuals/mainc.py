@@ -10,7 +10,7 @@ from src.metrics import calculate_metrics, generate_gbm_paths  # Added GBM impor
 # Added Backtest import
 from src.indicators import add_technical_indicators
 # Importing the sidebar layout function
-import visuals.sidebar_layout as sidebar
+from visuals.sidebar_layout import sidebar
 # Added backtest function import
 from src.indicators import run_vectorized_backtest
 
@@ -20,7 +20,7 @@ from src.indicators import run_vectorized_backtest
 analysis_mode = st.sidebar.radio(
     "Select System Engine",
     ["Historical Ticker Analytics",
-        "Synthetic Market Stress Test (Monte Carlo)"]
+        "Synthetic Market Stress Test (Monte Carlo)"], key="selected_engine"
 )
 
 if analysis_mode == "Historical Ticker Analytics":
