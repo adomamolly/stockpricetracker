@@ -49,6 +49,18 @@ if analysis_mode == "Historical Ticker Analytics":
         data = process_data(data)
         data = add_technical_indicators(data)
 
+        if isinstance(data.columns, pd.MultiIndex):
+            # Keeps the first level name (e.g., 'Close') and drops the ticker name (e.g., 'AAPL')
+            data.columns = [col[0] if col[1] else col[0]
+                            for col in data.columns]
+
+        # Reset index to force 'Datetime' to become a standard, queryable column name string
+        data = data.reset_index()
+        if 'index' in data.columns:
+            data.rename(columns={'index': 'Datetime'}, inplace=True)
+        elif 'Date' in data.columns:
+            data.rename(columns={'Date': 'Datetime'}, inplace=True)
+
         last_close, prev_close, change, per_change, high, low, vol = calculate_metrics(
             data)
 
