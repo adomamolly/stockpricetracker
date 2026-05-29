@@ -73,7 +73,7 @@ if analysis_mode == "Historical Ticker Analytics":
             per_change.iloc[-1]) if hasattr(per_change, "iloc") else float(per_change)
         high = float(high.iloc[-1]) if hasattr(high, "iloc") else float(high)
         low = float(low.iloc[-1]) if hasattr(low, "iloc") else float(low)
-        volume = int(vol.iloc[-1]) if hasattr(vol, "iloc") else int(vol)
+        vol = int(vol.iloc[-1]) if hasattr(vol, "iloc") else int(vol)
 
         # 3. Display metrics
         st.metric(
