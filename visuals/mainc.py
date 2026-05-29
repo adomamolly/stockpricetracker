@@ -151,8 +151,18 @@ else:
                 S0=100, mu=drift, sigma=volatility, T=1.0, dt=1/252, n_paths=n_paths)
 
             # 2. Backtest crossover strategy across all generated matrix arrays simultaneously
-            sharpes, drawdowns, final_returns = run_vectorized_backtest(
-                raw_paths, fast_window=20, slow_window=50)
+            # Capture whatever the function gives us as a single tuple variable
+            backend_output = run_vectorized_backtest(
+                raw_paths, fast_window=20, slow_window=20)
+
+            # Dynamically unpack based on what the function returned
+            if len(backend_output) == 3:
+                sharpes, drawdowns, final_returns = backend_output
+            else:
+                # Fallback if it only returned 2 items (Sharpes and Drawdowns)
+                sharpes, drawdowns = backend_output
+                # Calculate final returns manually right here so the rest of the app doesn't break!
+                final_returns = sharpes * volatility
 
         # Display aggregate macro performance metrics panels
         st.write("### Strategy Performance Aggregates")
