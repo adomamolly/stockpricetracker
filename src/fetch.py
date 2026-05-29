@@ -5,7 +5,6 @@ import plotly.graph_objects as go  # visualizations
 import plotly.express as px  # visualizations
 from datetime import datetime, timedelta  # date and time manipulation
 import pytz  # time zone handling
-import ta  # technical analysis indicators
 
 ## part 1: function for pulling, processing and creating technical indicators##
 
