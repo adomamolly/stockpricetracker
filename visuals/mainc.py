@@ -99,7 +99,7 @@ if analysis_mode == "Historical Ticker Analytics":
             if indicator == 'SMA_20':
                 fig.add_trace(go.Scatter(
                     x=data['Datetime'], y=data['SMA_20'], name='SMA_20'))
-            elif indicator == 'EMA_50':
+            elif indicator == 'EMA_50' or indicator == 'EMA_20':
                 fig.add_trace(go.Scatter(
                     x=data['Datetime'], y=data['EMA_50'], name='EMA_50'))
 
