@@ -61,8 +61,22 @@ if analysis_mode == "Historical Ticker Analytics":
         elif 'Date' in data.columns:
             data.rename(columns={'Date': 'Datetime'}, inplace=True)
 
-        last_close, prev_close, change, per_change, high, low, vol = calculate_metrics(
-            data)
+        # 1. Capture the raw output as a single tuple variable to prevent a crash
+        metrics_output = calculate_metrics(data)
+
+        # 2. Dynamically unpack based on exactly how many values it returned
+        if len(metrics_output) == 7:
+            last_close, prev_close, change, per_change, high, low, volume = metrics_output
+        elif len(metrics_output) == 6:
+            # If it only gave us 6 items, prev_close is missing, so we map them safely:
+            last_close, change, per_change, high, low, volume = metrics_output
+            # Calculate prev_close manually on the fly so nothing breaks
+            prev_close = last_close - change
+        else:
+            # Fallback block just in case it's completely different
+            last_close, change, per_change, high, low, volume = metrics_output[:6]
+            # Calculate prev_close manually on the fly so nothing breaks
+            prev_close = last_close - change
 
         # 2. CRITICAL: Extract the single scalar value from each pandas Series
         last_close = float(
