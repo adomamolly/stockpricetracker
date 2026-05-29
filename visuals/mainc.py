@@ -112,7 +112,16 @@ if analysis_mode == "Historical Ticker Analytics":
             data[['Datetime', 'Open', 'High', 'Low', 'Close', 'Volume']])
 
         st.subheader('Technical Indicators')
-        st.dataframe(data[['SMA_20', 'EMA_50']])
+        st.subheader('Technical Indicators')
+
+# Safely extract any columns that contain the words SMA or EMA
+        indicator_cols = [col for col in data.columns if 'SMA' in str(
+            col) or 'EMA' in str(col)]
+
+        if indicator_cols:
+            st.dataframe(data[indicator_cols])
+        else:
+            st.info("Indicators calculated, but column names could not be parsed.")
 
 else:
     # --------------------------------------------------------------------------
