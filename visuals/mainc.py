@@ -9,6 +9,25 @@ from visuals.sidebar_layout import sidebar
 
 # update dashboard based on user input
 
+# get sidebar inputs (supports dict or tuple/list returns)
+params = sidebar()
+if isinstance(params, dict):
+    ticker = params.get('ticker', 'AAPL')
+    time_period = params.get('time_period', '1mo')
+    chart_type = params.get('chart_type', 'Line Chart')
+    indicators = params.get('indicators', [])
+    interval_mapping = params.get('interval_mapping', {time_period: '1d'})
+else:
+    try:
+        ticker, time_period, chart_type, indicators, interval_mapping = params
+    except Exception:
+        # fallbacks
+        ticker = 'AAPL'
+        time_period = '1mo'
+        chart_type = 'Line Chart'
+        indicators = []
+        interval_mapping = {time_period: '1d'}
+
 if st.sidebar.button('Update Dashboard'):
     data = fetch_data(ticker, time_period, interval_mapping[time_period])
     data = process_data(data)
