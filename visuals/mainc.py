@@ -52,13 +52,29 @@ if analysis_mode == "Historical Ticker Analytics":
         last_close, prev_close, change, per_change, high, low, vol = calculate_metrics(
             data)
 
-        st.metric(label=f"{ticker} Last Close Price",
-                  value=f"{last_close:.2f} USD", delta=f"{change:.2f} ({per_change:.2f}%) ")
+        # 2. CRITICAL: Extract the single scalar value from each pandas Series
+        last_close = float(
+            last_close.iloc[-1]) if hasattr(last_close, "iloc") else float(last_close)
+        change = float(
+            change.iloc[-1]) if hasattr(change, "iloc") else float(change)
+        per_change = float(
+            per_change.iloc[-1]) if hasattr(per_change, "iloc") else float(per_change)
+        high = float(high.iloc[-1]) if hasattr(high, "iloc") else float(high)
+        low = float(low.iloc[-1]) if hasattr(low, "iloc") else float(low)
+        volume = int(vol.iloc[-1]) if hasattr(vol, "iloc") else int(vol)
 
+        # 3. Display metrics (This line 56 will now work flawlessly!)
+        st.metric(
+            label=f"{ticker} Last Close Price",
+            value=f"{last_close:.2f} USD",
+            delta=f"{change:.2f} ({per_change:.2f}%) "
+        )
+
+        # 4. Display columns using the corrected single variables
         col1, col2, col3 = st.columns(3)
         col1.metric('High', f"{high:.2f} USD")
         col2.metric('Low', f"{low:.2f} USD")
-        col3.metric('Volume', f"{vol:,}")
+        col3.metric('Volume', f"{volume:,}")
 
         fig = go.Figure()
         if chart_type == 'Candlestick Chart':
