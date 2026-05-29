@@ -112,7 +112,7 @@ if analysis_mode == "Historical Ticker Analytics":
             data[['Datetime', 'Open', 'High', 'Low', 'Close', 'Volume']])
 
         st.subheader('Technical Indicators')
-        st.dataframe(data[['SMA 20', 'EMA 20']])
+        st.dataframe(data[['SMA_20', 'EMA_20']])
 
 else:
     # --------------------------------------------------------------------------
