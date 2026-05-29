@@ -66,15 +66,15 @@ if analysis_mode == "Historical Ticker Analytics":
 
         # 2. Dynamically unpack based on exactly how many values it returned
         if len(metrics_output) == 7:
-            last_close, prev_close, change, per_change, high, low, volume = metrics_output
+            last_close, prev_close, change, per_change, high, low, vol = metrics_output
         elif len(metrics_output) == 6:
             # If it only gave us 6 items, prev_close is missing, so we map them safely:
-            last_close, change, per_change, high, low, volume = metrics_output
+            last_close, change, per_change, high, low, vol = metrics_output
             # Calculate prev_close manually on the fly so nothing breaks
             prev_close = last_close - change
         else:
             # Fallback block just in case it's completely different
-            last_close, change, per_change, high, low, volume = metrics_output[:6]
+            last_close, change, per_change, high, low, vol = metrics_output[:6]
             # Calculate prev_close manually on the fly so nothing breaks
             prev_close = last_close - change
 
