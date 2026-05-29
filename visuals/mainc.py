@@ -9,7 +9,8 @@ from src.fetch import fetch_data, process_data
 from src.metrics import calculate_metrics, generate_gbm_paths  # Added GBM import
 # Added Backtest import
 from src.indicators import add_technical_indicators
-from visuals.sidebar_layout import sidebar
+# Importing the sidebar layout function
+import visuals.sidebar_layout as sidebar
 from indicators import run_vectorized_backtest  # Added backtest function import
 
 # ==============================================================================
