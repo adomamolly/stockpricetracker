@@ -8,7 +8,7 @@ from yfinance import Ticker
 from src.fetch import fetch_data, process_data
 from src.metrics import calculate_metrics, generate_gbm_paths  # Added GBM import
 # Added Backtest import
-from src.indicators import add_technical_indicators, run_vectorized_simulation_backtest
+from src.indicators import add_technical_indicators, run_vectorized_backtest
 from visuals.sidebar_layout import sidebar
 from indicators import run_vectorized_backtest  # Added backtest function import
 
