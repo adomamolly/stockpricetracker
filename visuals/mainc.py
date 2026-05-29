@@ -11,7 +11,8 @@ from src.metrics import calculate_metrics, generate_gbm_paths  # Added GBM impor
 from src.indicators import add_technical_indicators
 # Importing the sidebar layout function
 import visuals.sidebar_layout as sidebar
-from indicators import run_vectorized_backtest  # Added backtest function import
+# Added backtest function import
+from src.indicators import run_vectorized_backtest
 
 # ==============================================================================
 # 1. ARCHITECTURE MODE SELECTOR (Placed at the absolute top of the sidebar)
