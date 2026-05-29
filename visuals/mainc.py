@@ -49,7 +49,7 @@ if analysis_mode == "Historical Ticker Analytics":
         data = process_data(data)
         data = add_technical_indicators(data)
 
-        last_close, change, per_change, high, low, vol = calculate_metrics(
+        last_close, prev_close, change, per_change, high, low, vol = calculate_metrics(
             data)
 
         st.metric(label=f"{ticker} Last Close Price",
