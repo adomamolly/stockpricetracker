@@ -11,7 +11,7 @@ def calculate_metrics(data):
     high = data['High'].max()
     low = data['Low'].min()
     vol = data['Volume'].sum()
-    return last_close, change, per_change, high, low, vol
+    return last_close, prev_close, change, per_change, high, low, vol
 
 
 # adding a geometric brownian motion generator to create synthetic price arrays
