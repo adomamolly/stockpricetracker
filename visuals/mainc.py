@@ -25,7 +25,7 @@ analysis_mode = st.sidebar.radio(
 
 if analysis_mode == "Historical Ticker Analytics":
     # --------------------------------------------------------------------------
-    # MODE A: YOUR ORIGINAL HISTORICAL DASHBOARD FLOW
+    # MODE A: HISTORICAL DASHBOARD FLOW
     # --------------------------------------------------------------------------
     params = sidebar()
     if isinstance(params, dict):
